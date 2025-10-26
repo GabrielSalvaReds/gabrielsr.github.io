@@ -327,3 +327,61 @@ a:focus, button:focus, input:focus, textarea:focus{outline:2px solid rgba(123,21
 
 
 .btn-primary:active{transform:translateY(1px)}
+
+
+
+
+
+@media (min-width: 881px) {
+  .site-sidebar {
+    transform: translateX(0) !important; 
+    transition: transform 0.36s cubic-bezier(.2,.9,.2,1), box-shadow .36s;
+  }
+
+
+  .site-sidebar.collapsed {
+    transform: translateX(-300px) !important;
+    box-shadow: none !important;
+  }
+
+
+  .sidebar-toggle {
+    position: fixed;
+    top: 50%;
+    left: 320px; 
+    transform: translateY(-50%);
+    background: var(--glass-strong);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 20000;
+    transition: left 0.35s cubic-bezier(.2,.9,.2,1), transform 0.35s, background 0.3s;
+  }
+
+
+  .site-sidebar.collapsed + .sidebar-toggle,
+  .sidebar-toggle.collapsed { 
+    left: 24px;
+  }
+
+  .sidebar-toggle i {
+    transition: transform 0.28s;
+    font-size: 1.05rem;
+  }
+
+  .site-sidebar.collapsed + .sidebar-toggle i,
+  .sidebar-toggle.collapsed i {
+    transform: rotate(180deg);
+  }
+}
+
+
+@media (max-width: 880px) {
+  .sidebar-toggle { display: none; }
+}
