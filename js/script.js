@@ -328,3 +328,48 @@ themeToggle.addEventListener("click", () => {
   window.addEventListener('resize', () => { if (window.innerWidth > 880) closeSidebar(); });
 
 })();
+
+
+
+(function () {
+  const sidebar = document.getElementById('siteSidebar');
+  const toggleBtn = document.getElementById('sidebarToggle');
+
+  if (!sidebar || !toggleBtn) return;
+
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+
+ 
+    if (window.innerWidth <= 880) {
+
+      return;
+    }
+
+    const isCollapsed = sidebar.classList.toggle('collapsed');
+
+
+    toggleBtn.classList.toggle('collapsed', isCollapsed);
+
+ 
+    const icon = toggleBtn.querySelector('i');
+    if (icon) {
+      icon.classList.remove('bi-chevron-left', 'bi-chevron-right');
+      icon.classList.add(isCollapsed ? 'bi-chevron-right' : 'bi-chevron-left');
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth <= 880) {
+      sidebar.classList.remove('collapsed');
+      toggleBtn.classList.remove('collapsed');
+      const icon = toggleBtn.querySelector('i');
+      if (icon) {
+        icon.classList.remove('bi-chevron-right');
+        icon.classList.add('bi-chevron-left');
+      }
+    }
+  });
+})();
+
